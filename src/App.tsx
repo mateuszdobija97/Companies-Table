@@ -1,10 +1,10 @@
 import React from "react";
-import CompaniesListing from "./modules/companies/companiesListing";
+import TablePage from "./modules/companies/TablePage";
 
 export interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
-  return <CompaniesListing />;
+  return <TablePage />;
 };
 
 export default App;
