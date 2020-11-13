@@ -1,4 +1,4 @@
-interface CompanyIncomesItem {
+export interface CompanyIncomesItem {
     value: string,
     date: string,
 }

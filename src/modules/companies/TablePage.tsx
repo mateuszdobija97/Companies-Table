@@ -5,6 +5,8 @@ import { CompanyIncomes } from "./api/companyIncomes";
 import { getCompanies, getCompanyById } from "./api/TablePageApiService";
 import { sumOfIncomes, avgOfIncomes, lastMonthIncomes } from "./utils/calculations";
 
+import CompaniesTable from '../../components/CompaniesTable'
+
 export interface TablePageProps {}
 
 type CompanyDetails = {
@@ -13,7 +15,7 @@ type CompanyDetails = {
   lastMonthIncomes: number,
 }
 
-type EnhancedCompany = Company & CompanyDetails
+export type EnhancedCompany = Company & CompanyDetails
 
 const TablePage: React.FC<TablePageProps> = () => {
   const [basicCompanyList, setBasicCompanyList] = useState<Company[]>([]);
@@ -70,9 +72,7 @@ const TablePage: React.FC<TablePageProps> = () => {
   return (
     <>
     { loadingStatus===AsyncStatus.Loading || !enhancedCompanies.length ? <p>Loading...</p> : <div>
-      <pre>
-        {JSON.stringify(enhancedCompanies, null, 2)}
-      </pre>
+      <CompaniesTable companies={enhancedCompanies} />
     </div>}
     </>
   );

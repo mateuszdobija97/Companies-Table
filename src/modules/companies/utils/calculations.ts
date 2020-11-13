@@ -1,4 +1,6 @@
-export const sumOfIncomes = ( incomes: any[] ) : number => {
+import { CompanyIncomesItem } from '../api/companyIncomes'
+
+export const sumOfIncomes = ( incomes: CompanyIncomesItem[] ) : number => {
     let sum = 0;
     incomes.map(income => 
       sum += parseInt(income.value)
@@ -6,11 +8,11 @@ export const sumOfIncomes = ( incomes: any[] ) : number => {
     return sum;
   }
 
-  export const avgOfIncomes = ( sumOfIncomes: number, howManyIncomes: number ) : number => {
-      return sumOfIncomes / howManyIncomes;
+  export const avgOfIncomes = ( sumOfIncomes: number, howMany: number ) : number => {
+      return sumOfIncomes / howMany;
   }
 
-  export const lastMonthIncomes = ( incomes: any[] ) : number => {
+  export const lastMonthIncomes = ( incomes: CompanyIncomesItem[] ) : number => {
       const today = new Date();
       let lastMonth = today.getMonth() - 1;
       let actuallyYear = today.getFullYear();
