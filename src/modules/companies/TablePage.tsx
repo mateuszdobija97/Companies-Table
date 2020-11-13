@@ -22,6 +22,8 @@ const TablePage: React.FC<TablePageProps> = () => {
   const [companiesDetails, setCompaniesDetails] = useState<CompanyIncomes[]>([]);
   const [loadingStatus, setLoadingStatus] = useState<AsyncStatus>(AsyncStatus.Idle);
   const [search, setSearch] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [perPage, setPerPage] = useState<number>(20);
 
   const getCompaniesList = useCallback(async () => {
     setLoadingStatus(AsyncStatus.Loading);

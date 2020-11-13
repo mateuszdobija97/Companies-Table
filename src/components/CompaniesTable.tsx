@@ -1,33 +1,38 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { EnhancedCompany } from '../modules/companies/TablePage'
-import CompanyDetails from './CompanyDetails'
-import styled from 'styled-components'
 import { sort } from '../modules/companies/utils/sort'
+import styled from 'styled-components'
+import CompanyDetails from './CompanyDetails'
 
-const Table = styled.table`
-    
+const TableWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
-const THead = styled.thead`
-
-`
-
-const TBody = styled.tbody`
-
-`
-
-const Tr = styled.tr`
-
+const Table = styled.table `
+    border-collapse: collapse;
+    margin: 10px 0;
+    width: 95%;
 `
 
 const Th = styled.th`
-
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    background: rgb(0, 115, 119);
+    color: #e7e7e7;
+    text-align: center;
+    &:hover {
+        cursor: pointer;
+        background: #f5f5f5;
+        color: rgb(0, 115, 119);
+        transition: .3s
+    }
 `
 
-interface CompaniesTableProps { 
-    companies: EnhancedCompany[]
- }
+interface CompaniesTableProps { companies: EnhancedCompany[] }
 
 const CompaniesTable: React.FC<CompaniesTableProps> = ({ companies }) => {
     const [sortDesc, setSortDesc] = useState<boolean>(false);
@@ -37,37 +42,27 @@ const CompaniesTable: React.FC<CompaniesTableProps> = ({ companies }) => {
         return sort(type, key, list, sortDesc);
     }
 
-const renderedData = companies.map(company => <CompanyDetails key={company.id} company={company} />)
+    const renderedCompaniesDetails = companies.map((company, index) => <CompanyDetails key={company.id} company={company} index={index} />)
 
     return (
-        <Table>
-            <THead>
-            <Tr>
-                <Th onClick={() => sortByColumn('number', 'id', companies, sortDesc)}>
-                    Id:
-                </Th>
-                <Th onClick={() => sortByColumn('string', 'name', companies, sortDesc)}>
-                    Name:
-                </Th>
-                <Th onClick={() => sortByColumn('string', 'city', companies, sortDesc)}>
-                    City:
-                </Th>
-                <Th onClick={() => sortByColumn('number', 'incomes', companies, sortDesc)}>
-                    Total incomes:
-                </Th>
-                <Th onClick={() => sortByColumn('number', 'avgIncomes', companies, sortDesc)}>
-                    Average Incomes:
-                </Th>
-                <Th onClick={() => sortByColumn('number', 'lastMonthIncomes', companies, sortDesc)}>
-                    Last month incomes:
-                </Th>
-            </Tr>
-            </THead>
-            <TBody>
-            {renderedData}
-            </TBody>
-        </Table>
+        <TableWrapper>
+            <Table>
+                <thead>
+                    <tr>
+                        <Th onClick={() => sortByColumn('number', 'id', companies, sortDesc)}> Id: </Th>
+                        <Th onClick={() => sortByColumn('string', 'name', companies, sortDesc)}> Name: </Th>
+                        <Th onClick={() => sortByColumn('string', 'city', companies, sortDesc)}> City: </Th>
+                        <Th onClick={() => sortByColumn('number', 'incomes', companies, sortDesc)}> Total Incomes: </Th>
+                        <Th onClick={() => sortByColumn('number', 'avgIncomes', companies, sortDesc)}> Average Incomes: </Th>
+                        <Th onClick={() => sortByColumn('number', 'lastMonthIncomes', companies, sortDesc)}> Last Month Incomes: </Th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {renderedCompaniesDetails}
+                </tbody>
+            </Table>
+        </TableWrapper>
     )
 }
 
-export default CompaniesTable
+export default CompaniesTable;
