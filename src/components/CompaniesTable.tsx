@@ -32,9 +32,12 @@ const Th = styled.th`
     }
 `
 
-interface CompaniesTableProps { companies: EnhancedCompany[] }
+interface CompaniesTableProps { 
+    companies: EnhancedCompany[],
+    filter: string
+ }
 
-const CompaniesTable: React.FC<CompaniesTableProps> = ({ companies }) => {
+const CompaniesTable: React.FC<CompaniesTableProps> = ({ companies, filter }) => {
     const [sortDesc, setSortDesc] = useState<boolean>(false);
 
     const sortByColumn = (type: string, key: string, list: EnhancedCompany[], sortDesc: boolean) : EnhancedCompany[] => {
@@ -42,7 +45,18 @@ const CompaniesTable: React.FC<CompaniesTableProps> = ({ companies }) => {
         return sort(type, key, list, sortDesc);
     }
 
-    const renderedCompaniesDetails = companies.map((company, index) => <CompanyDetails key={company.id} company={company} index={index} />)
+    const filteredCompanies = companies.filter(company => {
+        return (
+                company.id.toString(10).includes(filter) ||
+                company.name.toLowerCase().includes(filter.toLowerCase()) ||
+                company.city.toLowerCase().includes(filter.toLowerCase()) ||
+                company.incomes.toString(10).includes(filter) ||
+                company.avgIncomes.toString(10).includes(filter) ||
+                company.lastMonthIncomes.toString(10).includes(filter)
+        )
+    })
+
+    const renderedCompaniesDetails = filteredCompanies.map((company, index) => <CompanyDetails key={company.id} company={company} index={index} />)
 
     return (
         <TableWrapper>

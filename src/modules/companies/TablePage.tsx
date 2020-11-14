@@ -6,6 +6,7 @@ import { getCompanies, getCompanyById } from "./api/TablePageApiService";
 import { sumOfIncomes, avgOfIncomes, lastMonthIncomes } from "./utils/calculations";
 
 import CompaniesTable from '../../components/CompaniesTable'
+import FilterTableBar from "../../components/FilterTableBar";
 
 export interface TablePageProps {}
 
@@ -21,9 +22,7 @@ const TablePage: React.FC<TablePageProps> = () => {
   const [basicCompanyList, setBasicCompanyList] = useState<Company[]>([]);
   const [companiesDetails, setCompaniesDetails] = useState<CompanyIncomes[]>([]);
   const [loadingStatus, setLoadingStatus] = useState<AsyncStatus>(AsyncStatus.Idle);
-  const [search, setSearch] = useState<string>('');
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [perPage, setPerPage] = useState<number>(20);
+  const [filter, setFilter] = useState<string>('');
 
   const getCompaniesList = useCallback(async () => {
     setLoadingStatus(AsyncStatus.Loading);
@@ -73,11 +72,16 @@ const TablePage: React.FC<TablePageProps> = () => {
 
   return (
     <>
-    { loadingStatus===AsyncStatus.Loading || !enhancedCompanies.length ? <p>Loading...</p> : <div>
-      <CompaniesTable companies={enhancedCompanies} />
-    </div>}
-    </>
-  );
+    { (loadingStatus===AsyncStatus.Loading || !enhancedCompanies.length) ? 
+      (<p>Loading...</p>) : 
+      (
+        <div>
+          <FilterTableBar filter={filter} setFilter={setFilter} />
+          <CompaniesTable companies={enhancedCompanies} filter={filter} />
+        </div>
+      )}
+      </>
+    );
 };
 
 export default TablePage;
