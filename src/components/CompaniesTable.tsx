@@ -34,10 +34,12 @@ const Th = styled.th`
 
 interface CompaniesTableProps { 
     companies: EnhancedCompany[],
-    filter: string
+    filter: string,
+    currentPage: number,
+    perPage: number,
  }
 
-const CompaniesTable: React.FC<CompaniesTableProps> = ({ companies, filter }) => {
+const CompaniesTable: React.FC<CompaniesTableProps> = ({ companies, filter, currentPage, perPage }) => {
     const [sortDesc, setSortDesc] = useState<boolean>(false);
 
     const sortByColumn = (type: string, key: string, list: EnhancedCompany[], sortDesc: boolean) : EnhancedCompany[] => {
@@ -56,7 +58,11 @@ const CompaniesTable: React.FC<CompaniesTableProps> = ({ companies, filter }) =>
         )
     })
 
-    const renderedCompaniesDetails = filteredCompanies.map((company, index) => <CompanyDetails key={company.id} company={company} index={index} />)
+    const indexOfLastCompany: number = currentPage * perPage;
+    const indexOfFirstCompany: number = indexOfLastCompany - perPage;
+    const currentCompanies: EnhancedCompany[] = filteredCompanies.slice(indexOfFirstCompany, indexOfLastCompany)
+
+    const renderedCompaniesDetails = currentCompanies.map((company, index) => <CompanyDetails key={company.id} company={company} index={index} />)
 
     return (
         <TableWrapper>

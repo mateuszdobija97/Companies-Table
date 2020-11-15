@@ -8,7 +8,7 @@ export default createGlobalStyle`
     }
 
     body {
-        background: brown;
+        background: rgb(162, 208, 210);
         font-size: 14px;
         color: #333;
         font-family: sans-serif;

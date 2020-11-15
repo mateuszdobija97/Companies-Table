@@ -7,8 +7,7 @@ import { sumOfIncomes, avgOfIncomes, lastMonthIncomes } from "./utils/calculatio
 
 import CompaniesTable from '../../components/CompaniesTable'
 import FilterTableBar from "../../components/FilterTableBar";
-
-export interface TablePageProps {}
+import Pagination from "../../components/Pagination";
 
 type CompanyDetails = {
   incomes: number,
@@ -18,11 +17,14 @@ type CompanyDetails = {
 
 export type EnhancedCompany = Company & CompanyDetails
 
-const TablePage: React.FC<TablePageProps> = () => {
+const perPage = 20;
+
+const TablePage: React.FC = () => {
   const [basicCompanyList, setBasicCompanyList] = useState<Company[]>([]);
   const [companiesDetails, setCompaniesDetails] = useState<CompanyIncomes[]>([]);
   const [loadingStatus, setLoadingStatus] = useState<AsyncStatus>(AsyncStatus.Idle);
-  const [filter, setFilter] = useState<string>('');
+  const [filter, setFilter] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
 
   const getCompaniesList = useCallback(async () => {
     setLoadingStatus(AsyncStatus.Loading);
@@ -77,7 +79,8 @@ const TablePage: React.FC<TablePageProps> = () => {
       (
         <div>
           <FilterTableBar filter={filter} setFilter={setFilter} />
-          <CompaniesTable companies={enhancedCompanies} filter={filter} />
+          <CompaniesTable companies={enhancedCompanies} currentPage={currentPage} perPage={perPage} filter={filter} />
+          <Pagination perPage={perPage} currentPage={currentPage} setCurrentPage={setCurrentPage} companies={enhancedCompanies} />
         </div>
       )}
       </>

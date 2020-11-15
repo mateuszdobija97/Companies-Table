@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import GlobalStyle from './styles/global'
 import styled from 'styled-components';
 
@@ -14,10 +15,12 @@ export interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
   return (
+    <Router>
     <Wrapper>
       <GlobalStyle />
-      <TablePage />
+      <Route path='/' component={TablePage} />
     </Wrapper>
+    </Router>
   )
 };
 
