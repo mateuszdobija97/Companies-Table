@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# Companies Table
+Companies table created in React using: TypeScript, API, Hooks, Styled-Components, HTML, CSS. This project was bootstrapped with Create React App. The application works on desktop, mobile and tablet devices.
+## Table of contents
+* [General info](#general-info)
+* [Screenshots](#screenshots)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Features](#features)
+* [Status](#status)
+* [Contact](#contact)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## General info
+The project contains detailed information about company's incomes, i.e. 'id, name, city, total income, average income, last month income'. The purpose of the project is to get a job and acquire new skills in the front-end technologies.
 
-## Available Scripts
+## Screenshots
 
-In the project directory, you can run:
+### Application view:
+![Example screenshot](./readme/start.PNG)
 
-### `npm start`
+### Reponsive view:
+![Example screenshot](./readme-img/responsive-view.PNG)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies
+* npm - version 6.14.4
+* react/react-dom - version 16.13.1
+* node - version 14.0.0
+* axios - version 0.19.2
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Setup
 
-### `npm test`
+### Download the source code use:
+```
+git clone https://github.com/mateuszdobija97/Companies.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Install npm and axios use:
+```
+npm install
+npm i axios
+npm install styled-components
+```
 
-### `npm run build`
+### Run the server:
+```
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### List of features:
+* Data display (id, name, city, total income, average income, last month income)
+* Sorting data (click on a column: first click - ascending, second click - descending)
+* Data search (can filter the result of the table by all fields)
+* Paginated table (20 data per page)
+* Responsive view (The application works on breakpoints: 360x640 ++)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Status
+Project is finished.
 
-### `npm run eject`
+## Contact
+#### E-mail: mateusz.dobija.rce@gmail.com
+#### Linkedin: https://www.linkedin.com/in/mateusz-dobija-9278a71a9/
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### Created by Mateusz Dobija
