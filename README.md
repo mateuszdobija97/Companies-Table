@@ -18,7 +18,7 @@ The project contains detailed information about company's incomes, i.e. 'id, nam
 ![Example screenshot](./readme/start.PNG)
 
 ### Reponsive view:
-![Example screenshot](./readme-img/responsive-view.PNG)
+![Example screenshot](./readme/responsive-view.PNG)
 
 ## Technologies
 * npm - version 6.14.4
