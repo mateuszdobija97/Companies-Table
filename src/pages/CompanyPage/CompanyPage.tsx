@@ -3,19 +3,13 @@ import { AsyncStatus } from "../../common/types";
 import { Company } from "./api/company";
 import { CompanyIncomes } from "./api/companyIncomes";
 import { getCompanies, getCompanyById } from "./api/TablePageApiService";
-import { sumOfIncomes, avgOfIncomes, lastMonthIncomes } from "./utils/calculations";
+import { EnhancedCompany } from "./CompanyPage.types";
+import { sumOfIncomes, avgOfIncomes, lastMonthIncomes } from "../../utils/calculations";
 
-import CompaniesTable from '../../components/CompaniesTable'
-import FilterTableBar from "../../components/FilterTableBar";
-import Pagination from "../../components/Pagination";
+import {CompaniesTable} from './components/CompaniesTable'
+import {FilterTableBar} from "./components/FilterTableBar";
+import {Pagination} from "./components/Pagination";
 
-type CompanyDetails = {
-  incomes: number,
-  avgIncomes: number,
-  lastMonthIncomes: number,
-}
-
-export type EnhancedCompany = Company & CompanyDetails
 
 const perPage = 20;
 

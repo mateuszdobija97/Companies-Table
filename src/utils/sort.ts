@@ -1,4 +1,4 @@
-import { EnhancedCompany } from "../TablePage";
+import { EnhancedCompany } from "../pages/CompanyPage/CompanyPage.types";
 
 export const sort = (type: string, key: string, list: EnhancedCompany[], sortDesc: boolean) : EnhancedCompany[] => {
     let sorted: EnhancedCompany[] = [];

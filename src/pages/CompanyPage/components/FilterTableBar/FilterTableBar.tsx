@@ -1,15 +1,5 @@
 import React from 'react'
-import styled from 'styled-components';
-
-const InputWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
-
-const Input = styled.input`
-    margin: 10px 0;
-`
+import { Searchbar } from './FilterTableBar.styles';
 
 interface IFilterTable {
     filter: string,
@@ -18,13 +8,14 @@ interface IFilterTable {
 
 const FilterTableBar: React.FC<IFilterTable> = ({ filter, setFilter }) => {
     return (
-        <InputWrapper>
-            <Input 
+        <Searchbar>
+            <input 
                 type='text'
                 value={filter}
                 onChange={e => setFilter(e.target.value)}
+                placeholder='Filter the table...'
             />
-        </InputWrapper>
+        </Searchbar>
     )
 }
 

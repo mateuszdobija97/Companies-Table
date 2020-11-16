@@ -1,4 +1,4 @@
-import { CompanyIncomesItem } from '../api/companyIncomes'
+import { CompanyIncomesItem } from '../pages/CompanyPage/api/companyIncomes'
 
 export const sumOfIncomes = ( incomes: CompanyIncomesItem[] ) : number => {
     let sum = 0;
