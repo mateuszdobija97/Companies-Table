@@ -8,12 +8,12 @@ const CompanyDetails: React.FC<ICompanyDetailsProps> = ({ company, index }) => {
 
     return (
             <Tr isOdd={Boolean(index%2)}>
-                <Td>{company.id}</Td>
-                <Td>{company.name}</Td>
-                <Td>{company.city}</Td>
-                <Td>{company.incomes}</Td>
-                <Td>{company.avgIncomes}</Td>
-                <Td>{company.lastMonthIncomes}</Td>
+                <Td data-label='Id:'>{company.id}</Td>
+                <Td data-label='Name:'>{company.name}</Td>
+                <Td data-label='City:'>{company.city}</Td>
+                <Td data-label='Incomes:'>{company.incomes}</Td>
+                <Td data-label='Average Incomes:'>{company.avgIncomes}</Td>
+                <Td data-label='Last Month Incomes:'>{company.lastMonthIncomes}</Td>
             </Tr>
     )
 }

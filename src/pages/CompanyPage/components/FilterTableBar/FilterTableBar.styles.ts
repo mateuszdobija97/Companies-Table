@@ -4,7 +4,7 @@ export const Searchbar = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 5px;
+  padding: 20px 0 10px;
   input {
     text-transform: uppercase;
     background: none;

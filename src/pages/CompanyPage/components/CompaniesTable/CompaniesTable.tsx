@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { sort } from '../../../../utils/sort'
 import { CompaniesTableProps, EnhancedCompany } from '../../CompanyPage.types'
 import {CompanyDetails} from '../CompanyDetails'
-import { TableWrapper, Table, Th } from './CompaniesTable.styles'
+import { TableWrapper, Table, Th, ResponseDiv } from './CompaniesTable.styles'
 
 const CompaniesTable: React.FC<CompaniesTableProps> = ({ companies, filter, currentPage, perPage }) => {
     const [sortDesc, setSortDesc] = useState<boolean>(false);
@@ -31,6 +31,17 @@ const CompaniesTable: React.FC<CompaniesTableProps> = ({ companies, filter, curr
     const renderedCompaniesDetails = currentCompanies.map((company, index) => <CompanyDetails key={company.id} company={company} index={index} />)
 
     return (
+        <>
+        <ResponseDiv>
+            <ul>
+                <li onClick={() => sortByColumn('number', 'id', companies, sortDesc)}> Id: </li>
+                <li onClick={() => sortByColumn('string', 'name', companies, sortDesc)}> Name: </li>
+                <li onClick={() => sortByColumn('string', 'city', companies, sortDesc)}> City: </li>
+                <li onClick={() => sortByColumn('number', 'incomes', companies, sortDesc)}> Total Incomes: </li>
+                <li onClick={() => sortByColumn('number', 'avgIncomes', companies, sortDesc)}> Average Incomes: </li>
+                <li onClick={() => sortByColumn('number', 'lastMonthIncomes', companies, sortDesc)}> Last Month Incomes: </li>
+            </ul>
+        </ResponseDiv>
         <TableWrapper>
             <Table>
                 <thead>
@@ -48,6 +59,7 @@ const CompaniesTable: React.FC<CompaniesTableProps> = ({ companies, filter, curr
                 </tbody>
             </Table>
         </TableWrapper>
+        </>
     )
 }
 

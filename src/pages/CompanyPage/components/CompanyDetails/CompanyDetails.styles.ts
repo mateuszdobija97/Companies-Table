@@ -10,6 +10,9 @@ export const Tr = styled.tr<ITr>`
         cursor: pointer;
         background: #DDD;
     }
+    @media(max-width: 720px) {
+        display: block;
+    }
 `
 
 export const Td = styled.td`
@@ -17,4 +20,20 @@ export const Td = styled.td`
     border: 1px solid #ddd;
     text-align: center;
     font-size: 16px;
+    @media(max-width: 720px) {
+        display: block;
+        padding-left: 50%;
+        text-align: right;
+        position: relative;
+        &::before {
+            position: absolute;
+            left: 0;
+            width: 50%;
+            padding-left: 15px;
+            content: attr(data-label);
+            text-align: left;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
 `

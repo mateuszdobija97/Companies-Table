@@ -4,7 +4,10 @@ import { NavLink } from 'react-router-dom';
 export const Wrapper = styled.div`
 position: absolute;
 left: 2.5%;
-margin: 5px 0 20px;
+right: 2.5%;
+display: flex;
+flex-wrap: wrap;
+padding-bottom: 20px;
 `
 
 export const Link = styled(NavLink)`
